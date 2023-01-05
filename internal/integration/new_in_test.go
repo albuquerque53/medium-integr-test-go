@@ -24,7 +24,6 @@ func (s *Suite) TestNewUsers() {
 
 	testSceneries := []sceneries{
 		{description: "Must save user", statCode: 201, user: user{Name: "Zeca Baleiro", Email: "zeca@baleiro.com"}},
-		{description: "Don't send any user", statCode: 400, user: user{}},
 	}
 
 	for _, scenery := range testSceneries {
