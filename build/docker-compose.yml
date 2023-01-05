@@ -1,0 +1,28 @@
+version: '3.9'
+
+services:
+  app:
+    build:
+      dockerfile: Dockerfile
+      context: .
+    container_name: users_api
+    working_dir: /opt/api
+    volumes:
+      - ../:/opt/api
+    command: tail -f /dev/null
+    ports:
+      - 2001:2001
+  
+  db:
+    container_name: users_db 
+    image: mysql:5.7
+    environment:
+      MYSQL_DATABASE: 'users_db'
+      MYSQL_USER: 'users_dev'
+      MYSQL_PASSWORD: 'users_password' 
+      MYSQL_ROOT_PASSWORD: 'users_root_password' 
+    volumes:
+      - users_db_volume:/var/lib/mysql
+
+volumes:
+  users_db_volume:
